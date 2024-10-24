@@ -34,7 +34,7 @@
 			"inspect"
 		],
 		"name": "Document System",
-		"main": "src/CodeGen/main.ts",
-		"ui": "src/CodeGen/ui.tsx"
+		"main": "src/page/main.ts",
+		"ui": "src/page/ui.tsx"
 	}
 }
