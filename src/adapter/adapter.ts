@@ -17,8 +17,9 @@ type parametersType = HandlerParameters<adapterSampleHandler>
 type handlerType = Handler<adapterSampleHandler>
 
 /**
- * 데이터 실제 저장 로직 (reducer)
+ * 데이터 실제 저장 객체에 저장되는 로직
  * 리엑트의 경우.. 사용해봐야 알 것 같음
+ * 키 발행 로직이 따로 필요할 수 있음
  */
 export const model = (value: string) => {
 	figma.root.setPluginData('main', value)
@@ -30,10 +31,13 @@ export const model = (value: string) => {
 export const repository = (obj: Object) => {
 	const value = JSON.stringify(obj)
 	model(value)
+	// 단일 검색
+	// return value
 }
 
 /**
  * 구현해야되는 비즈니스 로직
+ * 서비스는 서비스를 사용할 수 있음?
  */
 export const service: handlerType = (count) => {
 	const data = {
@@ -41,6 +45,8 @@ export const service: handlerType = (count) => {
 		count: count,
 	}
 	repository(data)
+	// 내부 레포지토리에 종속적이고 재사용이 어려운 단점
+	// 리턴이 있는 로직과 레포지토리를 구분하기 어려운 단점
 }
 
 /**
@@ -50,3 +56,12 @@ export const service: handlerType = (count) => {
 export const adapter = () => {
 	on<adapterSampleHandler>('SAMPLE', service)
 }
+
+// test2
+// on pipe ( readModel  , repository  , service ,  adapter )
+// 실행 왼쪽으로 가서 마지막이 결과인 파이프
+//  pipe ( 20 , setModel  , repository , service ,  adapter )
+// 다음 파이프가 실행되는 값으로 함수를 보낼지 값을 보낼지를 번갈아가면서 핸들링해야한다는 점에서 난이도 높음
+// 리턴이 거의 강제다보니 재사용성은 높음
+// 데이터 저장으로 도달하는 중심이 중요한 것으로 판단되고
+// 양방향 처리하는게 좋을 것 같음
