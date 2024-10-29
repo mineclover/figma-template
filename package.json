@@ -34,7 +34,7 @@
 			"inspect"
 		],
 		"name": "Document System",
-		"main": "src/page/main.ts",
-		"ui": "src/page/ui.tsx"
+		"main": "src/apps/main.ts",
+		"ui": "src/apps/ui.tsx"
 	}
 }

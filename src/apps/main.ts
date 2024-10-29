@@ -1,6 +1,5 @@
 import { once, showUI } from '@create-figma-plugin/utilities'
-
-import { CloseHandler, adapterSampleHandler } from '@/adapter/types'
+import { adapterSampleHandler, CloseHandler } from '../adapter/types'
 
 export default function () {
 	once<adapterSampleHandler>('SAMPLE', function (count: number) {
