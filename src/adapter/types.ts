@@ -1,7 +1,7 @@
 import { EventHandler } from '@create-figma-plugin/utilities'
 
-export interface CreateRectanglesHandler extends EventHandler {
-	name: 'CREATE_RECTANGLES'
+export interface adapterSampleHandler extends EventHandler {
+	name: 'SAMPLE'
 	handler: (count: number) => void
 }
 

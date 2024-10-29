@@ -1,9 +1,9 @@
 import { once, showUI } from '@create-figma-plugin/utilities'
 
-import { CloseHandler, CreateRectanglesHandler } from '@/adapter/types'
+import { CloseHandler, adapterSampleHandler } from '@/adapter/types'
 
 export default function () {
-	once<CreateRectanglesHandler>('CREATE_RECTANGLES', function (count: number) {
+	once<adapterSampleHandler>('SAMPLE', function (count: number) {
 		const nodes: Array<SceneNode> = []
 		for (let i = 0; i < count; i++) {
 			const rect = figma.createRectangle()
