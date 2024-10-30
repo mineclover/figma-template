@@ -2,7 +2,7 @@ import { on, once, emit, EventHandler } from '@create-figma-plugin/utilities'
 
 import { useState, useEffect } from 'preact/hooks'
 
-import { OnceHandler, rejectCheck, rejectSymbol, syncEmit } from '../interface'
+import { OnceHandler, rejectCheck, rejectSymbol, asyncEmit } from '../interface'
 
 import { UserDuplex } from '../types'
 import { generateRandomText2 } from '../../utils/textTools'
@@ -62,7 +62,7 @@ export const service = () => {
 }
 
 const a = async () => {
-	const dataTest = await syncEmit<UserDuplex>('User')
+	const dataTest = await asyncEmit<UserDuplex>('User')
 	if (rejectCheck(dataTest)) {
 		console.log(dataTest)
 	}

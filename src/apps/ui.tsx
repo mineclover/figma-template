@@ -6,6 +6,7 @@ import { NonNullableComponentTypeExtract } from '../../types/utilType'
 
 import { emit } from '@create-figma-plugin/utilities'
 import { ResizeWindowHandler } from '../adapter/types'
+import Root from '@/pages/Root'
 
 const fn = async (files: Array<File>) => {
 	const text = await files[0].text()
@@ -26,7 +27,7 @@ function Plugin() {
 
 	const options: Array<TabsOption> = [
 		{
-			children: 'SVG 생성기',
+			children: <Root />,
 			value: nav[0],
 		},
 		{
